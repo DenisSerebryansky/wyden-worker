@@ -1,0 +1,22 @@
+server.port: 8020
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        prefetch: 1
+        retry:
+          enabled: true
+          initial-interval: 100ms
+          max-retries: 5
+          multiplier: 2.0
+          max-interval: 10s
+
+worker:
+  handling-ms: 1000
+  fail-every-second-task: false
